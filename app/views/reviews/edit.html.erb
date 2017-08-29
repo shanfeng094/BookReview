@@ -1,6 +1,16 @@
 <h1>编辑评论</h1>
 <%= simple_form_for([@book,@review]) do |f| %>
-  <%= f.input :rating %>
+  <!-- <%= f.input :rating %> -->
+  <div class="rating-form">
+    <label>打分</label>
+    <!-- <%= f.input :rating%> -->
+  </div>
   <%= f.input :comment %>
   <%= f.button :submit %>
 <% end %>
+<script>
+  $('.rating-form').raty({
+    scoreName:'review[rating]',
+    path:'/assets/'
+  });
+</script>

@@ -6,6 +6,8 @@
 
     <h2><%= @book.title %></h2>
     <h3><%= @book.authur %></h3>
+    <h4>平均打分:<div class="average-review-rating" data-score=<%= @average_review%>></div></h4>
+    <span>根据<%= @book.reviews.count%>个评价</span>
     <h4>类目：<%= @book.category.name %></h4>
     <p><%= @book.description %></p>
   </div>
@@ -30,6 +32,15 @@
 <% end %>
 <script>
   $('.review-rating').raty({
+    readOnly:true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path:'/assets/'
+  });
+</script>
+<script>
+  $('.average-review-rating').raty({
     readOnly:true,
     score: function() {
       return $(this).attr('data-score');
